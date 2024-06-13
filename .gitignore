@@ -1,0 +1,12 @@
+
+*.exe
+*.recipe
+*.ilk
+*.log
+*.pdb
+*.tlog
+*.txt
+*.obj
+*.idb
+*.iobj
+*.ipdb
