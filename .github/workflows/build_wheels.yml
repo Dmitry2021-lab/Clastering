@@ -1,35 +1,25 @@
-name: Build Wheels
+name: Build wheels
 
 on: [push, pull_request]
 
 jobs:
-  build_wheels:
-    name: Build Wheels on ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-
+  build:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: ['3.6', '3.7', '3.8', '3.9', '3.10']
-
+        platform: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.platform }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Python
+      - uses: actions/checkout@v2
+      - name: Setup Python
         uses: actions/setup-python@v2
         with:
-          python-version: ${{ matrix.python-version }}
-
+          python-version: 3.9
       - name: Install cibuildwheel
         run: pip install cibuildwheel
-
       - name: Build wheels
         run: cibuildwheel --output-dir wheelhouse
-
       - name: Upload wheels
-        if: success()
         uses: actions/upload-artifact@v2
         with:
-          name: wheelhouse-${{ matrix.os }}-${{ matrix.python-version }}
+          name: wheels
           path: wheelhouse
