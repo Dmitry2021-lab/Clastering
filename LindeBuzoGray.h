@@ -45,7 +45,6 @@ struct
 class TLindeBuzoGray
 {
   private:
-      
       RArg FirstClaster(vector < vector <double> >& SeqCoff);
       RArg MaxVariances(vector < vector <double> >& SeqCoff, RModelStage Mdl);
       vector < vector <int> > SetClasterPoint(vector < vector <double> >& SeqCoff, RModelStage Mdl);
@@ -60,6 +59,4 @@ class TLindeBuzoGray
       RModelStage LindeBuzoGray_N(vector < vector <double> >& SeqCoff, int NCls);
       RModelStage K_MeanGeneral(vector <vector <double> >& SeqCoff, RModelStage InitPrm);
 };
-
-
 #endif
